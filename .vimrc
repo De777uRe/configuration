@@ -22,5 +22,8 @@ set ai
 " Search highlighting
 set hlsearch
 
+" Incremental search
+set incsearch
+
 " Always show cursor position
 set ruler
