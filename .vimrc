@@ -1,5 +1,5 @@
-" Toggle relative number lines
-set relativenumber
+" Toggle number lines
+set number
 
 " Turn on syntax highlighting
 syntax on
@@ -27,3 +27,7 @@ set incsearch
 
 " Always show cursor position
 set ruler
+
+" If search contains upper, be case sensitive; if all lower, be case insensitive
+set ignorecase
+set smartcase
