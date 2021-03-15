@@ -2,7 +2,7 @@
 " Toggle relative number lines
 set relativenumber
 " Toggle current line number as well
-set nu
+set number
 
 "===Syntax==="
 " Turn on syntax highlightig
