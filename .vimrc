@@ -2,7 +2,6 @@
 set nocompatible            " required
 filetype off                " required
 set encoding=UTF-8
-set guifont=Victor\ Mono\ Regular
 
 "===Vundle==="
 " Set the runtime path to include Vundle and initialize
@@ -16,7 +15,14 @@ call vundle#begin()
     Plugin 'preservim/nerdtree'
     Plugin 'Xuyuanp/nerdtree-git-plugin'
     Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-    Plugin 'ryanoasis/vim-devicons'
+    Plugin 'scrooloose/nerdtree-project-plugin' " save/restore state of NERDTree between sessions
+    Plugin 'PhilRunninger/nerdtree-buffer-ops' " Highlight open files, close buffers directly from NERDTree
+    Plugin 'PhilRunninger/nerdtree-visual-selection' " Enable NERDTree to open, delete, move, or copy multiple visually selected files at once
+    Plugin 'vim-airline/vim-airline'
+    Plugin 'vim-airline/vim-airline-themes'
+    Plugin 'dense-analysis/ale'
+    Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    Plugin 'ryanoasis/vim-devicons' " manual says always keep as last
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
 filetype plugin indent on   " required
@@ -97,3 +103,9 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
     autocmd VimEnter * NERDTree | wincmd p
     " Exit Vim if NERDTree is the only window left
     autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+    "===Airline==="
+    let g:airline_theme='google_dark'
+    "===LanguageClient==="
+    let g:LanguageClient_servercommans = {
+        \ 'python': ['/home/willgo/.local/bin/pyls'],
+        \}
