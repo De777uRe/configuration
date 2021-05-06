@@ -1,3 +1,26 @@
+"===General==="
+set nocompatible            " required
+filetype off                " required
+set encoding=UTF-8
+set guifont=Victor\ Mono\ Regular
+
+"===Vundle==="
+" Set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+    "===Plugins==="
+    " Let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
+    Plugin 'preservim/nerdtree'
+    Plugin 'Xuyuanp/nerdtree-git-plugin'
+    Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+    Plugin 'ryanoasis/vim-devicons'
+" All of your Plugins must be added before the following line
+call vundle#end()           " required
+filetype plugin indent on   " required
+
 "===Numbering==="
 " Toggle relative number lines
 set relativenumber
@@ -23,7 +46,7 @@ set tabstop=4
 set hlsearch
 " Incremental search
 set incsearch
-" In order to turn toggle smartcase
+" In order to toggle smartcase
 set ignorecase
 " If search contains capital letter, case-sensitive search
 " If not, case-insensitive search
@@ -45,6 +68,12 @@ set scrolloff=10
 "===Misc==="
 " Highlight column 80
 set colorcolumn=80
+" Backspace behaviors
+set backspace=indent,eol,start
+" Map leader to comma
+let mapleader = ","
+" Show commands
+set showcmd
 
 "===Mappings==="
 " Alt + j/k to move lines up and down
@@ -54,3 +83,17 @@ inoremap <A-j> <Esc>:m .+1<CR>==gi
 inoremap <A-k> <Esc>:m .-2<CR>==gi
 vnoremap <A-j> :m '>+1<CR>gv=gv
 vnoremap <A-k> :m '<-2<CR>gv=gv
+    "===NERDTree==="
+    nnoremap <leader>n :NERDTreeFocus<CR>
+    nnoremap <C-n> :NERDTree<CR>
+    nnoremap <C-t> :NERDTreeToggle<CR>
+    nnoremap <C-f> :NERDTreeFind<CR>
+
+"===AutoCmds==="
+    "===NERDTree==="
+    " Show hidden files by default
+    let NERDTreeShowHidden=1
+    " Start NERDTree and put the cursor back in the other window
+    autocmd VimEnter * NERDTree | wincmd p
+    " Exit Vim if NERDTree is the only window left
+    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
