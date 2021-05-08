@@ -1,7 +1,7 @@
 # Make directory and cd to it
 mkcdir () {
-    mkdir -p -- '$1' &&
-    cd -P -- '$1'
+    mkdir -p -- "$1" &&
+    cd -P -- "$1"
 }
 
 # cd to directory symlink points to
