@@ -1,5 +1,10 @@
-mkcdir ()
-{
-  mkdir -p -- "$1" &&
-  cd -P -- "$1"
+# Make directory and cd to it
+mkcdir () {
+    mkdir -p -- '$1' &&
+    cd -P -- '$1'
+}
+
+# cd to directory symlink points to
+followlink () {
+    cd -- "$(dirname -- "$(readlink -- "$1")")"
 }
