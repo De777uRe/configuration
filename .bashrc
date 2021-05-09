@@ -126,3 +126,5 @@ fi
 # Default editor
 export EDITOR='nvim'
 export VISUAL='nvim'
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

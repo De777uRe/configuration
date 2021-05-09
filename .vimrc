@@ -2,6 +2,7 @@
 set nocompatible            " required
 filetype off                " required
 set encoding=UTF-8
+let g:python3_host_prog= '/usr/bin/python3'
 
 "===Vundle==="
 " Set the runtime path to include Vundle and initialize
@@ -26,12 +27,13 @@ call vundle#begin()
         Plugin 'PhilRunninger/nerdtree-visual-selection'
         Plugin 'vim-airline/vim-airline'
         Plugin 'vim-airline/vim-airline-themes'
-        Plugin 'SirVer/ultisnips'
+        Plugin 'sirver/ultisnips'
+        Plugin 'honza/vim-snippets'
         " Better formatting of tabular data with command :Tabularize \<char>
         Plugin 'godlygeek/tabular'
         " Basically NERDTree for buffers
         Plugin 'jeetsukumaran/vim-buffergator'
-        " Plugin 'dense-analysis/ale'
+        Plugin 'dense-analysis/ale'
         Plugin 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
         " Use Tab to autocomplete
         Plugin 'ervandew/supertab'
@@ -39,6 +41,10 @@ call vundle#begin()
         Plugin 'gilsondev/searchtasks.vim'
          " Allows 'jk' to act as <ESC> in Insert mode
         Plugin 'zhou13/vim-easyescape'
+        " Fuzzy finding
+        Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plugin 'junegunn/fzf.vim'
+
         " manual says always keep as last
         Plugin 'ryanoasis/vim-devicons'
 
@@ -52,6 +58,8 @@ call vundle#begin()
         Plugin 'vim-syntastic/syntastic'
         " Git commands
         Plugin 'tpope/vim-fugitive'
+        " Autocomplete
+        Plugin 'ycm-core/YouCompleteMe'
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
 filetype plugin indent on   " required
@@ -90,6 +98,8 @@ set smartcase
 "===Cursor==="
 " Always show cursor position
 set ruler
+" Highlight current line
+set cursorline
 
 "===Buffers==="
 " Allows faster navigation between buffers
@@ -109,6 +119,7 @@ set backspace=indent,eol,start
 let mapleader = ","
 " Show commands
 set showcmd
+set background=dark
 
 "===Mappings==="
 " Alt + j/k to move lines up and down
@@ -126,17 +137,28 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
 
 "===AutoCmds==="
     "===NERDTree==="
-    " Show hidden files by default
-    let NERDTreeShowHidden=1
-    " Start NERDTree and put the cursor back in the other window
-    autocmd VimEnter * NERDTree | wincmd p
-    " Exit Vim if NERDTree is the only window left
-    autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+        " Show hidden files by default
+        let NERDTreeShowHidden=1
+        " Start NERDTree and put the cursor back in the other window
+        autocmd VimEnter * NERDTree | wincmd p
+        " Exit Vim if NERDTree is the only window left
+        autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
     "===Airline==="
-    let g:airline_theme='google_dark'
+        let g:airline_theme='hybridline'
     "===searchtasks==="
-    let g:searchtasks_list=["TODO", "FIXME"]
+        let g:searchtasks_list=["TODO", "FIXME"]
     "===EasyEscape==="
-    let g:easyescape_chars = { "j": 1, "k": 1 }
-    let g:easyescape_timeout = 100
-    cnoremap jk <ESC>
+        let g:easyescape_chars = { "j": 1, "k": 1 }
+        let g:easyescape_timeout = 100
+        cnoremap jk <ESC>
+    "===deoplete==="
+        " Use deoplete
+        let g:deoplete#enable_at_startup = 1
+        " make YCM compatible with UltiSnips (using supertab)
+        let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+        let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+        let g:SuperTabDefaultCompletionType = '<C-n>'
+        " better key bindings for UltiSnipsExpandTrigger
+        let g:UltiSnipsExpandTrigger = "<tab>"
+        let g:UltiSnipsJumpForwardTrigger = "<tab>"
+        let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
