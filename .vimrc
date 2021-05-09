@@ -6,6 +6,7 @@ set encoding=UTF-8
 "===Vundle==="
 " Set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+let g:vundle_default_git_proto = 'git'
 call vundle#begin()
 " Alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -47,6 +48,10 @@ call vundle#begin()
         Plugin 'Townk/vim-autoclose'
         " Add comments with 'gcc' and more
         Plugin 'tomtom/tcomment_vim'
+        " Sytax Checker
+        Plugin 'vim-syntastic/syntastic'
+        " Git commands
+        Plugin 'tpope/vim-fugitive'
 " All of your Plugins must be added before the following line
 call vundle#end()           " required
 filetype plugin indent on   " required
