@@ -100,6 +100,8 @@ set smartcase
 set ruler
 " Highlight current line
 set cursorline
+" Mouse compatibility
+set mouse=a
 
 "===Buffers==="
 " Allows faster navigation between buffers
