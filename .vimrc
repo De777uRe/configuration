@@ -1,7 +1,7 @@
 "===General==="
 set nocompatible            " required
 filetype off                " required
-set encoding=UTF-8
+set encoding=utf8
 let g:python3_host_prog= '/usr/bin/python3'
 
 "===Vundle==="
@@ -147,6 +147,7 @@ vnoremap <A-k> :m '<-2<CR>gv=gv
         autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
     "===Airline==="
         let g:airline_theme='hybridline'
+        let g:airline_powerline_fonts = 1
     "===searchtasks==="
         let g:searchtasks_list=["TODO", "FIXME"]
     "===EasyEscape==="
