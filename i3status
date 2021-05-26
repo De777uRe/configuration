@@ -11,30 +11,35 @@ general {
         interval = 5
 }
 
+order += "tztime local"
+#order += "battery all"
+order += "cpu_usage"
+order += "load"
 order += "disk /"
 order += "wireless _first_"
-order += "battery all"
-order += "load"
-order += "tztime local"
+
+tztime local {
+        format = "%Y-%m-%d %H:%M:%S"
+}
+
+cpu_usage {
+        format = "CPU: %usage"
+}
+
+load {
+    format = " %1min "
+}
+
+disk "/" {
+        format = "%avail"
+}
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
         format_down = "W: down"
 }
 
-battery all {
-        format = "%status %percentage %remaining"
-}
-
-tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
-}
-
-load {
-        format = "%1min"
-}
-
-disk "/" {
-        format = "%avail"
-}
+# battery all {
+#         format = "%status %percentage %remaining"
+# }
 
