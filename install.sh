@@ -31,3 +31,14 @@ for f in ${i3_files[@]}; do
         ln -s ~/configuration/i3$f ~/.config/i3status/config
     fi
 done
+
+declare -a dot_config_files=(
+    "compton.conf"
+)
+
+for f in ${dot_config_files[@]}; do
+    echo "Creating configuration link for: $f"
+    rm -f ~/.config/$f
+    ln -s ~/configuration/$f ~/.config/$f
+done
+

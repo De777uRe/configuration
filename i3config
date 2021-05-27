@@ -189,3 +189,8 @@ bindsym $mod+m move workspace to output left
 
 # Suspend
 bindsym $mod+Shift+period exec systemctl suspend
+
+# Wallpaper
+exec --no-startup-id feh --randomize --bg-scale /home/willgo/Pictures/*
+exec_always compton --config ~/.config/compton.conf
+exec_always guake
