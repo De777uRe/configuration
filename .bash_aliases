@@ -14,3 +14,6 @@ alias editalias="nv ~/.bash_aliases"
 
 # source ~/.bashrc
 alias src="source ~/.bashrc"
+
+# refresh wallpaper
+alias rstfeh="feh --randomize --bg-scale /home/willgo/Pictures/*"
