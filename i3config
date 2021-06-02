@@ -159,9 +159,15 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
+        position top
         status_command i3status
         tray_output primary
 }
+
+# Wallpaper
+exec --no-startup-id feh --randomize --bg-scale /home/willgo/Pictures/*
+exec_always compton --config ~/.config/compton.conf
+exec_always guake
 
 # ------------------------------------------
 # CUSTOM KEYS START
@@ -189,8 +195,3 @@ bindsym $mod+m move workspace to output left
 
 # Suspend
 bindsym $mod+Shift+period exec systemctl suspend
-
-# Wallpaper
-exec --no-startup-id feh --randomize --bg-scale /home/willgo/Pictures/*
-exec_always compton --config ~/.config/compton.conf
-exec_always guake
