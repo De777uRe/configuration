@@ -1,0 +1,9 @@
+#!/bin/sh
+#feh --no-fehbg --bg-scale '/home/willgo/Pictures/pexels-sanaan-mazhar-3075993.jpg' 
+
+while true; do
+    for f in /home/willgo/Pictures/*; do
+        feh -z --no-fehbg --bg-scale "$f"
+        sleep 300
+    done
+done
