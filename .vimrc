@@ -65,8 +65,6 @@ call vundle#end()           " required
 filetype plugin indent on   " required
 
 "===Numbering==="
-" Toggle relative number lines
-set relativenumber
 " Toggle current line number as well
 set number
 
